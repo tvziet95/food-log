@@ -1,35 +1,40 @@
-<p id="notice"><%= notice %></p>
+<%= content_for :title do %>
+  Food Log &ndash; <%= DateTime.now.to_s(:nice_date) %>
+<% end %>
 
-<h1>Entries</h1>
+<div class="columns mt-6 is-centered">
+  <% @entries.each do |entry| %>
+    <div class="column is-one-quarter">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title is-centered">
+            <%= entry.meal_type %>
+          </p>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <p><span class="has-text-weight-bold"><%= entry.calories %></span> calories</p>
+            <p><span class="has-text-weight-bold"><%= entry.proteins %></span> proteins</p>
+            <p><span class="has-text-weight-bold"><%= entry.carbohydrates %></span> carbohydrates</p>
+            <p><span class="has-text-weight-bold"><%= entry.fats %></span> fats</p>
+            <p class="italic">Logged <%= time_ago_in_words(entry.created_at) %> ago</p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <%= link_to 'Show', entry_path(entry), class: 'card-footer-item' %>
+          <%= link_to 'Edit', edit_entry_path(entry), class: 'card-footer-item' %>
+          <%= link_to 'Destroy', entry_path(entry), method: :delete, data: { confirm: 'Are you sure?'  }, class: 'card-footer-item' %>
+        </footer>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Meal type</th>
-      <th>Calories</th>
-      <th>Proteins</th>
-      <th>Carbohydrates</th>
-      <th>Fats</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.meal_type %></td>
-        <td><%= entry.calories %></td>
-        <td><%= entry.proteins %></td>
-        <td><%= entry.carbohydrates %></td>
-        <td><%= entry.fats %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Entry', new_entry_path %>
+<div class="columns is-centered mt-6">
+  <%= link_to 'View all entries', archive_index_path, class: 'button is-link is-outlined is-centered' %>
+</div>
