@@ -1,0 +1,50 @@
+        
+<section class="hero is-link is-small">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <%= link_to root_path, class: 'navbar-item' do %>
+              <span class="has-text-weight-bold has-text-white is-size-4 ml-4 mt-4 mr-2">Food Log</span>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="50" height="50" viewBox="0 0 512 512">
+                <g>
+                </g>
+                  <path d="M451.625 114.309c7.977-7.219 7.209-14.469-1.536-21.698-44.524 8.386-322.437 118.774-328.54 140.103 109.65-39.608 220.048-78.807 330.076-118.405z" fill="#ffffff"/>
+                  <path d="M373.965 26.757c-4.956-33.495-41.513 5.335-67.758 21.32-27.054 20.92-49.49 36.158-77.281 57.118-26.276 20.153-136.315 97.055-142.398 120.658l287.437-199.096z" fill="#ffffff"/>
+                  <path d="M191.191 275.722c28.18-11.018 24.381-49.858 77.292-30.065 4.946 7.998 0 14.848-6.471 22.825 33.127-12.912 53.709-29.286 78.439 13.342 19.415-6.462 58.634 9.523 61.675-0.758-15.237-8.356-31.232-15.216-54.825-15.216-7.618-7.24-15.596-14.090-23.603-21.33-12.185-3.81-24.74-3.43-37.284 1.137-12.985-8.376-19.825-17.889-41.902-17.889-21.709 0-28.58 9.513-41.134 17.889-33.495 0-36.536 0.369-61.297 22.825-15.984 4.577-32.348 8.755-48.343 13.342 0.748 2.284 1.136 4.577 1.904 6.462 17.889-2.642 35.789-5.325 53.678-7.977 6.471-24.361 55.972-38.83 41.871-4.587z" fill="#ffffff"/>
+                  <path d="M54.917 295.536c-2.294 88.32 54.057 170.916 113.449 202.916h173.23c0.368-1.157 61.296-52.562 76.124-79.196 16.763-30.863 31.232-79.175 31.232-123.719h-394.035z" fill="#ffffff"/>
+              </svg>
+            <% end %>
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroC" class="navbar-menu">
+          <div class="navbar-end">
+            <span class="navbar-item">
+              <%= link_to 'Create new entry', new_entry_path, class: 'button has-background-white' %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        <% if content_for :title %>
+          <%= yield :title %>
+        <% else %>
+          Food Log
+        <% end %>
+      </h1>
+    </div>
+  </div>
+</section>
